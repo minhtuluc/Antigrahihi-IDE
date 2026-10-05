@@ -1,0 +1,39 @@
+{
+  "capturedAt": "2026-10-05T12:59:16.839464+00:00",
+  "platform": "linux-x64",
+  "sourceCommit": "07f806f999227108933c2e30515b26eecc1fda74",
+  "note": "Logical file bytes, not disk blocks. Native process and GUI measurements unavailable under managed sandbox.",
+  "baseline": {
+    "out": {
+      "fileCount": 11403,
+      "fileBytes": 413820671
+    },
+    ".build/electron": {
+      "fileCount": 74,
+      "fileBytes": 330944705
+    },
+    "node_modules": {
+      "fileCount": 40032,
+      "fileBytes": 2077430564
+    },
+    "extensions/copilot/node_modules": {
+      "fileCount": 73491,
+      "fileBytes": 1476404811
+    }
+  },
+  "runtime": {
+    "electron": "43.7.3",
+    "node": "24.21.0",
+    "sqliteAvailable": true
+  },
+  "nativeProbe": {
+    "exitCode": 133,
+    "failure": "sandbox_host_linux.cc shutdown EPERM; X11 AF_UNIX connect EPERM"
+  },
+  "windows": {
+    "measured": false
+  },
+  "timingAndMemory": {
+    "measured": false
+  }
+}

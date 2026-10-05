@@ -1,0 +1,33 @@
+{
+  "name": "workspace-reader-toolchain",
+  "version": "0.3.0-dev",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "postinstall": "node bootstrap.mjs",
+    "build": "node build.mjs",
+    "test": "node test.mjs",
+    "check": "node typecheck.mjs",
+    "start": "node run.mjs",
+    "package": "node package.mjs"
+  },
+  "dependencies": {
+    "yauzl": "3.3.1",
+    "fast-xml-parser": "5.8.0",
+    "@vscode/codicons": "0.0.46-40",
+    "typescript": "npm:@typescript/typescript6@6.0.2",
+    "@types/node": "24.12.4",
+    "@types/yauzl": "2.10.3",
+    "@webgpu/types": "0.1.66",
+    "@types/mocha": "10.0.10",
+    "@types/semver": "7.5.8",
+    "@types/sinon": "10.0.2",
+    "@types/trusted-types": "2.0.7",
+    "@types/winreg": "1.2.30",
+    "@types/wicg-file-system-access": "2023.10.7",
+    "esbuild": "0.27.2"
+  }
+}

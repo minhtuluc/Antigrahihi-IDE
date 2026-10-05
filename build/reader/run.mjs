@@ -1,0 +1,12 @@
+import { spawn } from 'node:child_process';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { existsSync } from 'node:fs';
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+const candidates = [path.join(root, '.build/electron', process.platform === 'win32' ? 'Code - OSS.exe' : 'code-oss'), path.resolve(root, '../../code-oss/.build/electron/code-oss')];
+const electron = process.env.READER_ELECTRON || candidates.find(candidate => existsSync(candidate));
+const entry = path.join(root, '.reader-out/readerMain.mjs');
+if (!electron || !existsSync(electron) || !existsSync(entry)) throw new Error('Build reader first; set READER_ELECTRON to an existing pinned Electron binary.');
+const profile = process.env.READER_PROFILE || path.join(root, '.reader-runtime/profile');
+const child = spawn(electron, [entry, ...process.argv.slice(2)], { stdio: 'inherit', env: { ...process.env, ELECTRON_RUN_AS_NODE: '', READER_PROFILE: profile } });
+child.on('exit', (code, signal) => { process.exitCode = code ?? (signal ? 1 : 0); });

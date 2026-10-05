@@ -1,0 +1,27 @@
+{
+  "product": "Workspace Reader",
+  "specRevision": "R3",
+  "composition": "original-workbench-explicit-reader-services",
+  "entrypoints": {
+    "main": "src/vs/code/electron-main/readerMain.ts",
+    "preload": "src/vs/code/electron-preload/readerPreload.ts",
+    "renderer": "src/vs/workbench/reader.main.ts",
+    "io": "src/vs/code/electron-utility/novelReader/readerIo.ts"
+  },
+  "allowedCapabilities": ["local-book-import", "local-sqlite", "local-backup", "bounded-parse-search", "monaco-readonly", "original-workbench-layout", "local-decoy-scenes"],
+  "blockedCapabilities": ["extension-host", "pty", "shell", "git", "debug-adapter", "task-runner", "test-runner", "agent", "mcp", "remote", "cloud-sync", "external-navigation", "telemetry-upload"],
+  "limits": {
+    "fileBytes": 67108864,
+    "zipEntries": 20000,
+    "zipBytes": 268435456,
+    "assetBytes": 16777216,
+    "chapterBytes": 2097152,
+    "ioConcurrentRequests": 1
+  },
+  "forbiddenNativeDependencies": ["node-pty", "@vscode/ripgrep", "@vscode/copilot", "vscode-ripgrep", "git"],
+  "acceptance": {
+    "windows": "requires Windows runner; no pass claimed",
+    "camouflageObserver": "requires human observation; no pass claimed",
+    "nativeGui": "managed tool sandbox blocks Chromium shutdown and X11 socket operations; host smoke required"
+  }
+}
